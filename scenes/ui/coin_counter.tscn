@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c36egsp8hwvbt"]
+
+[ext_resource type="Script" path="res://scenes/ui/coin_counter.gd" id="1_0acdp"]
+[ext_resource type="Texture2D" uid="uid://cfoeg2txr54s7" path="res://assets/coin/coin_0.png" id="1_0gg2u"]
+[ext_resource type="Texture2D" uid="uid://bdw3kxn0eawx0" path="res://assets/coin/coin_1.png" id="2_pwv0y"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_0jov1"]
+frames = 2
+speed_scale = 8.0
+frame_0/texture = ExtResource("1_0gg2u")
+frame_1/texture = ExtResource("2_pwv0y")
+frame_1/duration = 1.0
+
+[node name="CoinCounter" type="HBoxContainer"]
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+script = ExtResource("1_0acdp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_0jov1")
+expand_mode = 1
+
+[node name="CoinLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "10/30"

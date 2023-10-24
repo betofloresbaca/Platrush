@@ -1,0 +1,218 @@
+[gd_scene load_steps=27 format=3 uid="uid://co73jgm5t0t77"]
+
+[ext_resource type="Script" path="res://scenes/elements/player.gd" id="1_61144"]
+[ext_resource type="Texture2D" uid="uid://2xf3vk0m7l0d" path="res://assets/player/player_0.png" id="2_v1cfc"]
+[ext_resource type="PackedScene" uid="uid://cwcddy80ujjr6" path="res://scenes/elements/player_death.tscn" id="2_xxrbr"]
+[ext_resource type="Texture2D" uid="uid://dcv21jpo7lych" path="res://assets/player/player_1.png" id="3_g03sr"]
+[ext_resource type="PackedScene" uid="uid://b6oi537lhw6vk" path="res://scenes/elements/footstep_particles.tscn" id="3_snjc8"]
+[ext_resource type="PackedScene" uid="uid://ckx3tmvgx6qcn" path="res://scenes/util/random_audio_stream_player.tscn" id="4_mhu1h"]
+[ext_resource type="AudioStream" uid="uid://caktj2wskpvqy" path="res://assets/sounds/footstep_wood_001.ogg" id="5_4kn7x"]
+[ext_resource type="Shader" path="res://scenes/elements/player.gdshader" id="5_k0a0w"]
+[ext_resource type="AudioStream" uid="uid://c5fxe8n7to8q4" path="res://assets/sounds/footstep_wood_002.ogg" id="6_c6oah"]
+[ext_resource type="AudioStream" uid="uid://di452ohmaseid" path="res://assets/sounds/footstep_wood_003.ogg" id="7_feybj"]
+[ext_resource type="AudioStream" uid="uid://dybi5w1bkl2v" path="res://assets/sounds/footstep_wood_004.ogg" id="8_5wgrw"]
+[ext_resource type="AudioStream" uid="uid://bivglbnbjjqje" path="res://assets/sounds/footstep_concrete_000.ogg" id="10_vxye2"]
+[ext_resource type="AudioStream" uid="uid://l1e3bf68bqpx" path="res://assets/sounds/footstep_concrete_001.ogg" id="11_x0uwr"]
+[ext_resource type="AudioStream" uid="uid://cu3qclj25yfu" path="res://assets/sounds/footstep_concrete_002.ogg" id="12_dqus7"]
+[ext_resource type="AudioStream" uid="uid://b5gkfkpaasc7u" path="res://assets/sounds/footstep_concrete_003.ogg" id="13_3i2jf"]
+[ext_resource type="AudioStream" uid="uid://bxs31piu0dgr4" path="res://assets/sounds/footstep_concrete_004.ogg" id="14_lqmsy"]
+[ext_resource type="AudioStream" uid="uid://cq3gp18ih180p" path="res://assets/sounds/impactBell_heavy_004.ogg" id="14_pvhtr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o66uq"]
+shader = ExtResource("5_k0a0w")
+shader_parameter/base_color = Color(0.294118, 0.796078, 0.623529, 1)
+
+[sub_resource type="Curve" id="Curve_a88fb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.258247, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0248897), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yeqbm"]
+curve = SubResource("Curve_a88fb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vy65x"]
+particle_flag_disable_z = true
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_curve = SubResource("CurveTexture_yeqbm")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gc3yh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v1cfc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_g03sr")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_g03sr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_v1cfc")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jh2ei"]
+radius = 13.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0v88"]
+size = Vector2(7, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nljwu"]
+height = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ec1gn"]
+size = Vector2(10, 16)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_61144")
+player_death_scene = ExtResource("2_xxrbr")
+footstep_scene = ExtResource("3_snjc8")
+dash_hurtbox_mask = 4
+facing = Vector2(1, 2.08165e-12)
+
+[node name="FootstepsSoundPlayer" parent="." instance=ExtResource("4_mhu1h")]
+enable_pitch_randomization = true
+
+[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
+stream = ExtResource("5_4kn7x")
+bus = &"Footsteps"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
+stream = ExtResource("6_c6oah")
+bus = &"Footsteps"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
+stream = ExtResource("7_feybj")
+bus = &"Footsteps"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
+stream = ExtResource("8_5wgrw")
+bus = &"Footsteps"
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
+stream = ExtResource("13_3i2jf")
+bus = &"Footsteps"
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
+stream = ExtResource("14_lqmsy")
+bus = &"Footsteps"
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
+stream = ExtResource("10_vxye2")
+bus = &"Footsteps"
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
+stream = ExtResource("11_x0uwr")
+bus = &"Footsteps"
+
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
+stream = ExtResource("12_dqus7")
+bus = &"Footsteps"
+
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
+stream = ExtResource("13_3i2jf")
+bus = &"Footsteps"
+
+[node name="AudioStreamPlayer11" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
+stream = ExtResource("14_lqmsy")
+bus = &"Footsteps"
+
+[node name="DashAudioPlayer" parent="." instance=ExtResource("4_mhu1h")]
+enable_pitch_randomization = true
+min_pitch_scale = 0.8
+max_pitch_scale = 1.0
+allow_sound_overlaping = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DashAudioPlayer"]
+stream = ExtResource("14_pvhtr")
+max_polyphony = 5
+bus = &"PlayerDash"
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="DashParticles" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_o66uq")
+position = Vector2(0, -12)
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_vy65x")
+texture = ExtResource("2_v1cfc")
+lifetime = 0.4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.08165e-12, -12)
+sprite_frames = SubResource("SpriteFrames_gc3yh")
+animation = &"run"
+
+[node name="Pickup" type="Area2D" parent="."]
+visible = false
+position = Vector2(-2.08165e-12, -12)
+collision_layer = 256
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup"]
+shape = SubResource("CircleShape2D_jh2ei")
+debug_color = Color(0.639216, 0.517647, 0.25098, 0.419608)
+
+[node name="Win" type="Area2D" parent="."]
+visible = false
+position = Vector2(-2.08165e-12, -12)
+collision_layer = 1024
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
+shape = SubResource("CircleShape2D_jh2ei")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+visible = false
+position = Vector2(2.08165e-12, -8)
+collision_layer = 0
+collision_mask = 132
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_a0v88")
+debug_color = Color(0.913725, 0.25098, 0.372549, 0.419608)
+
+[node name="EnemyKill" type="Area2D" parent="."]
+visible = false
+position = Vector2(-2.08165e-12, -11)
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyKill"]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_nljwu")
+disabled = true
+debug_color = Color(0.337067, 0.304, 0.8, 0.501961)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_ec1gn")
+debug_color = Color(1, 1, 1, 0.419608)
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="area_entered" from="Win" to="." method="_on_win_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

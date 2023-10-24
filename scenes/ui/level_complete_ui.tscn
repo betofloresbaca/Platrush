@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm3ntri437opu"]
+
+[ext_resource type="Theme" uid="uid://dmwm321ka5jog" path="res://resources/theme.tres" id="1_6vukl"]
+[ext_resource type="Script" path="res://scenes/ui/level_complete_ui.gd" id="1_jytsj"]
+[ext_resource type="PackedScene" uid="uid://c36egsp8hwvbt" path="res://scenes/ui/coin_counter.tscn" id="3_es7rf"]
+[ext_resource type="PackedScene" uid="uid://bwyw8du2pn4sv" path="res://scenes/ui/animated_button.tscn" id="4_ipw8o"]
+
+[node name="LevelCompleteUI" type="CanvasLayer"]
+script = ExtResource("1_jytsj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_6vukl")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(112, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level Complete!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CoinsColectecLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Coins Collected:"
+
+[node name="CoinCounter" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_es7rf")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 8)
+layout_mode = 2
+
+[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_ipw8o")]
+layout_mode = 2
+text = "RESTART"
+
+[node name="NextLevelButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_ipw8o")]
+layout_mode = 2
+text = "NEXT LEVEL"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]

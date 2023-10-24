@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://cug56jps8rru2"]
+
+[ext_resource type="Script" path="res://scenes/screen_transition_manager.gd" id="1_5yhkt"]
+[ext_resource type="PackedScene" uid="uid://bg0vuhywla7wl" path="res://scenes/ui/screen_transition.tscn" id="2_yvisn"]
+[ext_resource type="PackedScene" uid="uid://dkum0c1nkoweh" path="res://scenes/ui/main_menu.tscn" id="3_44ehp"]
+[ext_resource type="PackedScene" uid="uid://ftgcgr1fn2h8" path="res://scenes/ui/game_complete.tscn" id="4_p78rc"]
+
+[node name="ScreenTransitionManager" type="Node"]
+script = ExtResource("1_5yhkt")
+screen_transition_scene = ExtResource("2_yvisn")
+main_menu_scene = ExtResource("3_44ehp")
+game_complete_scene = ExtResource("4_p78rc")

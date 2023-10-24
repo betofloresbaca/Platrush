@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwyw8du2pn4sv"]
+
+[ext_resource type="Theme" uid="uid://dmwm321ka5jog" path="res://resources/theme.tres" id="1_aoa1v"]
+[ext_resource type="Script" path="res://scenes/ui/animated_button.gd" id="2_rlr7r"]
+[ext_resource type="AudioStream" uid="uid://c0v7bv235yklo" path="res://assets/sounds/click_002.ogg" id="3_3cb50"]
+
+[sub_resource type="Animation" id="Animation_y47ke"]
+resource_name = "hover"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(96, 24), Vector2(112, 24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(96, 25), Vector2(112, 25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0lko"]
+_data = {
+"hover": SubResource("Animation_y47ke")
+}
+
+[sub_resource type="Animation" id="Animation_e4a41"]
+resource_name = "click"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, -0.0523599, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j45rq"]
+_data = {
+"click": SubResource("Animation_e4a41")
+}
+
+[node name="AnimatedButton" type="Button" groups=["animated_button"]]
+custom_minimum_size = Vector2(96, 24)
+offset_right = 96.0
+offset_bottom = 25.0
+pivot_offset = Vector2(48, 12)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_aoa1v")
+text = "Test Text"
+script = ExtResource("2_rlr7r")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3cb50")
+bus = &"SFX"
+
+[node name="HoverAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m0lko")
+}
+
+[node name="ClickAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j45rq")
+}
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

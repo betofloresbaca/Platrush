@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://8ceo8u8ey23j"]
+
+[ext_resource type="Script" path="res://scenes/ui/options_menu.gd" id="1_g14uy"]
+[ext_resource type="Theme" uid="uid://dmwm321ka5jog" path="res://resources/theme.tres" id="1_l18dn"]
+[ext_resource type="PackedScene" uid="uid://bwyw8du2pn4sv" path="res://scenes/ui/animated_button.tscn" id="2_twbtu"]
+[ext_resource type="PackedScene" uid="uid://cmrsgdec1oclc" path="res://scenes/ui/range_control.tscn" id="4_6qu7a"]
+
+[node name="OptionsMenu" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_g14uy")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 125)
+theme = ExtResource("1_l18dn")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 2.08165e-12)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainerWindow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainerWindow"]
+layout_mode = 2
+text = "Window Mode"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainerWindow"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="WindowModeButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainerWindow/HBoxContainer" instance=ExtResource("2_twbtu")]
+layout_mode = 2
+text = "WINDOWED"
+
+[node name="MusicVolume" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolume"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicVolumeRangeControl" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolume" instance=ExtResource("4_6qu7a")]
+layout_mode = 2
+
+[node name="SfxVolume" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SfxVolume"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="SfxVolumeRangeControl" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SfxVolume" instance=ExtResource("4_6qu7a")]
+layout_mode = 2
+
+[node name="HBoxContainerBack" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainerBack" instance=ExtResource("2_twbtu")]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "BACK"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainerWindow/HBoxContainer/WindowModeButton" to="." method="_on_window_mode_button_pressed"]
+[connection signal="percentage_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolume/MusicVolumeRangeControl" to="." method="_on_music_volume_range_control_percentage_changed"]
+[connection signal="percentage_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SfxVolume/SfxVolumeRangeControl" to="." method="_on_sfx_volume_range_control_percentage_changed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainerBack/BackButton" to="." method="_on_back_button_pressed"]

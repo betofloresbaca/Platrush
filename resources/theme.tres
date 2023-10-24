@@ -1,0 +1,75 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dmwm321ka5jog"]
+
+[ext_resource type="Texture2D" uid="uid://bvhvvqg6wk4eu" path="res://assets/ui/tile_0009.png" id="1_7nxpt"]
+[ext_resource type="FontFile" uid="uid://e8ug1t7kt31x" path="res://assets/fonts/bit_potion.ttf" id="1_drydc"]
+[ext_resource type="Texture2D" uid="uid://bt0jhv00vrndh" path="res://assets/ui/tile_0029.png" id="1_rup0p"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_axva8"]
+texture = ExtResource("1_rup0p")
+texture_margin_left = 6.0
+texture_margin_top = 7.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 18, 18)
+modulate_color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_srbkb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rir17"]
+texture = ExtResource("1_7nxpt")
+texture_margin_left = 6.0
+texture_margin_top = 7.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mnwws"]
+texture = ExtResource("1_rup0p")
+texture_margin_left = 6.0
+texture_margin_top = 7.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 18, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jiwn6"]
+texture = ExtResource("1_rup0p")
+texture_margin_left = 6.0
+texture_margin_top = 7.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 18, 18)
+modulate_color = Color(0.796078, 0.796078, 0.796078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kiswk"]
+bg_color = Color(0, 0.360784, 0.333333, 0.635294)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.819608)
+shadow_size = 2
+anti_aliasing = false
+
+[resource]
+default_font = ExtResource("1_drydc")
+default_font_size = 16
+Button/colors/font_color = Color(0.435294, 0.243137, 0.262745, 1)
+Button/colors/font_pressed_color = Color(0.435294, 0.243137, 0.262745, 1)
+Button/font_sizes/font_size = 16
+Button/styles/disabled = SubResource("StyleBoxTexture_axva8")
+Button/styles/focus = SubResource("StyleBoxEmpty_srbkb")
+Button/styles/hover = SubResource("StyleBoxTexture_rir17")
+Button/styles/normal = SubResource("StyleBoxTexture_mnwws")
+Button/styles/pressed = SubResource("StyleBoxTexture_jiwn6")
+MarginContainer/constants/margin_bottom = 6
+MarginContainer/constants/margin_left = 6
+MarginContainer/constants/margin_right = 6
+MarginContainer/constants/margin_top = 6
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_kiswk")

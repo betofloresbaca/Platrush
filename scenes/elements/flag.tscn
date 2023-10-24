@@ -1,0 +1,184 @@
+[gd_scene load_steps=23 format=3 uid="uid://by2fpm0hk66sk"]
+
+[ext_resource type="Texture2D" uid="uid://bxi01fmtfxaa4" path="res://assets/flag/flag_pole.png" id="1_8pmtn"]
+[ext_resource type="Script" path="res://scenes/elements/flag.gd" id="1_hb2sy"]
+[ext_resource type="Texture2D" uid="uid://y14wqutnwwnq" path="res://assets/flag/flag_0.png" id="2_7wnjb"]
+[ext_resource type="AudioStream" uid="uid://v061rjh1ubmj" path="res://assets/sounds/jingles_PIZZI10.ogg" id="2_aagjt"]
+[ext_resource type="Texture2D" uid="uid://mvdw1ssn61fu" path="res://assets/flag/flag_1.png" id="3_0ohre"]
+[ext_resource type="Texture2D" uid="uid://b5wn0yvlrpq1e" path="res://assets/effects/confetti.png" id="4_6mxqv"]
+[ext_resource type="PackedScene" uid="uid://ckx3tmvgx6qcn" path="res://scenes/util/random_audio_stream_player.tscn" id="6_ne80g"]
+[ext_resource type="AudioStream" uid="uid://cc32w4hhcsrcr" path="res://assets/sounds/impactPlank_medium_000.ogg" id="8_1kgy0"]
+[ext_resource type="AudioStream" uid="uid://b0qy8so5yqrin" path="res://assets/sounds/impactPlank_medium_001.ogg" id="9_6otwh"]
+[ext_resource type="AudioStream" uid="uid://eko1wqbrwa8c" path="res://assets/sounds/impactPlank_medium_002.ogg" id="10_l3pxw"]
+[ext_resource type="AudioStream" uid="uid://b63ggnc5kkgyh" path="res://assets/sounds/impactPlank_medium_003.ogg" id="11_n53vj"]
+[ext_resource type="AudioStream" uid="uid://dwewux7o32kba" path="res://assets/sounds/impactPlank_medium_004.ogg" id="12_i1uy4"]
+
+[sub_resource type="Animation" id="Animation_4dy60"]
+resource_name = "won"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Confetti:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_player_won"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w64su"]
+_data = {
+"won": SubResource("Animation_4dy60")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d04tf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7wnjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0ohre")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shr8n"]
+size = Vector2(18, 36)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g1it2"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_7p07v"]
+max_value = 500.0
+_data = [Vector2(0, 500), 0.0, 0.0, 0, 0, Vector2(0.25871, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e8b4b"]
+curve = SubResource("Curve_7p07v")
+
+[sub_resource type="Curve" id="Curve_ln3ox"]
+max_value = 1.5
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0779247, 1.30506), 0.0, 0.0, 0, 0, Vector2(0.223719, 1.0104), 0.0, 0.0, 0, 0, Vector2(0.812729, 0.976134), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_1frkv"]
+curve = SubResource("Curve_ln3ox")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kn1id"]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 5.0
+particle_flag_disable_z = true
+direction = Vector3(2.08165e-12, -1, 2.08165e-12)
+spread = 30.0
+gravity = Vector3(2.08165e-12, 60, 2.08165e-12)
+initial_velocity_min = 75.0
+initial_velocity_max = 100.0
+angular_velocity_min = 180.0
+angular_velocity_max = 360.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_curve = SubResource("CurveTexture_e8b4b")
+scale_curve = SubResource("CurveTexture_1frkv")
+color = Color(0.819608, 0.156863, 0.741176, 1)
+hue_variation_max = 1.0
+anim_speed_min = 3.0
+anim_speed_max = 5.0
+anim_offset_max = 1.0
+
+[node name="Flag" type="Node2D"]
+script = ExtResource("1_hb2sy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w64su")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9, -9)
+texture = ExtResource("1_8pmtn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9, -27)
+sprite_frames = SubResource("SpriteFrames_d04tf")
+autoplay = "default"
+frame_progress = 0.555119
+
+[node name="WinArea" type="Area2D" parent="."]
+position = Vector2(9, -18)
+collision_layer = 512
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
+shape = SubResource("RectangleShape2D_shr8n")
+
+[node name="Confetti" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_g1it2")
+position = Vector2(3, -18)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_kn1id")
+texture = ExtResource("4_6mxqv")
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.95
+
+[node name="WinAudioPlayer" parent="." instance=ExtResource("6_ne80g")]
+
+[node name="Jingles" parent="WinAudioPlayer" instance=ExtResource("6_ne80g")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WinAudioPlayer/Jingles"]
+stream = ExtResource("2_aagjt")
+bus = &"SFX"
+
+[node name="ImpactPlank" parent="WinAudioPlayer" instance=ExtResource("6_ne80g")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WinAudioPlayer/ImpactPlank"]
+stream = ExtResource("8_1kgy0")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="WinAudioPlayer/ImpactPlank"]
+stream = ExtResource("9_6otwh")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="WinAudioPlayer/ImpactPlank"]
+stream = ExtResource("10_l3pxw")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="WinAudioPlayer/ImpactPlank"]
+stream = ExtResource("11_n53vj")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="WinAudioPlayer/ImpactPlank"]
+stream = ExtResource("12_i1uy4")
+volume_db = -5.0
+bus = &"SFX"
+
+[connection signal="area_entered" from="WinArea" to="." method="_on_win_area_area_entered"]

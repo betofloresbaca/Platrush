@@ -1,0 +1,159 @@
+[gd_scene load_steps=16 format=3 uid="uid://cdcchbq3upa8v"]
+
+[ext_resource type="Script" path="res://scenes/elements/coin.gd" id="1_i544s"]
+[ext_resource type="Texture2D" uid="uid://cfoeg2txr54s7" path="res://assets/coin/coin_0.png" id="2_nd5pm"]
+[ext_resource type="Texture2D" uid="uid://bdw3kxn0eawx0" path="res://assets/coin/coin_1.png" id="3_1f3gc"]
+[ext_resource type="PackedScene" uid="uid://ckx3tmvgx6qcn" path="res://scenes/util/random_audio_stream_player.tscn" id="4_r5ff4"]
+[ext_resource type="AudioStream" uid="uid://by42pbyiua1uf" path="res://assets/sounds/glass_004.ogg" id="5_m4qxs"]
+[ext_resource type="AudioStream" uid="uid://6wohnsc7x5o1" path="res://assets/sounds/impactGlass_heavy_000.ogg" id="6_hvqtf"]
+[ext_resource type="AudioStream" uid="uid://bu8fyw1v3ewnu" path="res://assets/sounds/impactGlass_heavy_001.ogg" id="7_30mw2"]
+[ext_resource type="AudioStream" uid="uid://by1e6fie51mla" path="res://assets/sounds/impactGlass_heavy_002.ogg" id="8_hnkof"]
+[ext_resource type="AudioStream" uid="uid://kav17l50i08p" path="res://assets/sounds/impactGlass_heavy_003.ogg" id="9_5lqa8"]
+[ext_resource type="AudioStream" uid="uid://j8i7el50xu7q" path="res://assets/sounds/impactGlass_heavy_004.ogg" id="10_3iamq"]
+
+[sub_resource type="Animation" id="Animation_5x2sn"]
+resource_name = "iddle"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2.08165e-12, -8)]
+}
+
+[sub_resource type="Animation" id="Animation_k2rnw"]
+resource_name = "pickup"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -16), Vector2(2.08165e-12, -20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(2.08165e-12, 2.08165e-12)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aoxc0"]
+_data = {
+"iddle": SubResource("Animation_5x2sn"),
+"pickup": SubResource("Animation_k2rnw")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ynnp6"]
+radius = 12.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n463g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nd5pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1f3gc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Coin" type="Node2D" groups=["coin"]]
+script = ExtResource("1_i544s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "iddle"
+libraries = {
+"": SubResource("AnimationLibrary_aoxc0")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ynnp6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n463g")
+autoplay = "default"
+
+[node name="RandomAudioStreamPlayer" parent="." instance=ExtResource("4_r5ff4")]
+
+[node name="Glass" parent="RandomAudioStreamPlayer" instance=ExtResource("4_r5ff4")]
+number_to_play = 1
+enable_pitch_randomization = true
+max_pitch_scale = 0.6
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RandomAudioStreamPlayer/Glass"]
+stream = ExtResource("5_m4qxs")
+volume_db = -12.0
+bus = &"Coins"
+
+[node name="ImpactGlass" parent="RandomAudioStreamPlayer" instance=ExtResource("4_r5ff4")]
+number_to_play = 3
+enable_pitch_randomization = true
+min_pitch_scale = 0.8
+max_pitch_scale = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RandomAudioStreamPlayer/ImpactGlass"]
+stream = ExtResource("6_hvqtf")
+volume_db = -12.0
+bus = &"Coins"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="RandomAudioStreamPlayer/ImpactGlass"]
+stream = ExtResource("7_30mw2")
+volume_db = -12.0
+bus = &"Coins"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="RandomAudioStreamPlayer/ImpactGlass"]
+stream = ExtResource("8_hnkof")
+volume_db = -12.0
+bus = &"Coins"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="RandomAudioStreamPlayer/ImpactGlass"]
+stream = ExtResource("9_5lqa8")
+volume_db = -12.0
+bus = &"Coins"
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="RandomAudioStreamPlayer/ImpactGlass"]
+stream = ExtResource("10_3iamq")
+volume_db = -12.0
+bus = &"Coins"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

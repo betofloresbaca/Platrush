@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://ftgcgr1fn2h8"]
+
+[ext_resource type="Theme" uid="uid://dmwm321ka5jog" path="res://resources/theme.tres" id="1_ij887"]
+[ext_resource type="Script" path="res://scenes/ui/game_complete.gd" id="1_w4hdj"]
+[ext_resource type="PackedScene" uid="uid://bwyw8du2pn4sv" path="res://scenes/ui/animated_button.tscn" id="2_gmeqx"]
+[ext_resource type="PackedScene" uid="uid://b51cm06wcblmv" path="res://scenes/ui/menu_background.tscn" id="2_odcm4"]
+
+[node name="GameComplete" type="CanvasLayer"]
+script = ExtResource("1_w4hdj")
+
+[node name="MenuBackground" parent="." instance=ExtResource("2_odcm4")]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ij887")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(112, 2.08165e-12)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "GAME COMPLETE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Thanks for playing"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ContinueButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_gmeqx")]
+layout_mode = 2
+text = "CONTINUE TO MENU
+"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

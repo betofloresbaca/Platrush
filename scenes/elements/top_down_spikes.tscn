@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0tdrdroh3ot1"]
+
+[ext_resource type="PackedScene" uid="uid://qjh1omcwqyl4" path="res://scenes/elements/spikes.tscn" id="1_3th6h"]
+
+[node name="TopDownSpikes" instance=ExtResource("1_3th6h")]
+position = Vector2(2.08165e-12, -9)
+rotation = 3.14159

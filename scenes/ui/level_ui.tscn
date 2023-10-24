@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciwsmlg45ebv"]
+
+[ext_resource type="Theme" uid="uid://dmwm321ka5jog" path="res://resources/theme.tres" id="1_tmkvc"]
+[ext_resource type="PackedScene" uid="uid://c36egsp8hwvbt" path="res://scenes/ui/coin_counter.tscn" id="3_apwbt"]
+
+[node name="LevelUI" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_tmkvc")
+
+[node name="CoinCounter" parent="MarginContainer" instance=ExtResource("3_apwbt")]
+layout_mode = 2

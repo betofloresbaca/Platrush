@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkum0c1nkoweh"]
+
+[ext_resource type="Theme" uid="uid://dmwm321ka5jog" path="res://resources/theme.tres" id="1_7xksr"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_65n6s"]
+[ext_resource type="PackedScene" uid="uid://bwyw8du2pn4sv" path="res://scenes/ui/animated_button.tscn" id="2_g20rk"]
+[ext_resource type="PackedScene" uid="uid://b51cm06wcblmv" path="res://scenes/ui/menu_background.tscn" id="2_ph7i3"]
+[ext_resource type="PackedScene" uid="uid://cq7asi40yqfqc" path="res://scenes/elements/sky.tscn" id="2_sk4vk"]
+[ext_resource type="PackedScene" uid="uid://8ceo8u8ey23j" path="res://scenes/ui/options_menu.tscn" id="5_ses4h"]
+
+[sub_resource type="Animation" id="Animation_lu0vw"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_1dxc3"]
+resource_name = "default"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(1.1, 1.1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5cwkg"]
+_data = {
+"RESET": SubResource("Animation_lu0vw"),
+"default": SubResource("Animation_1dxc3")
+}
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_65n6s")
+
+[node name="Sky" parent="." instance=ExtResource("2_sk4vk")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5cwkg")
+}
+
+[node name="MenuBackground" parent="." instance=ExtResource("2_ph7i3")]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 125)
+theme = ExtResource("1_7xksr")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(112, 2.08165e-12)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PlayButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_g20rk")]
+layout_mode = 2
+text = "PLAY"
+
+[node name="OptionsButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_g20rk")]
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_g20rk")]
+layout_mode = 2
+text = "QUIT
+"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("5_ses4h")]
+visible = false
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="back_pressed" from="OptionsMenu" to="." method="_on_options_menu_back_pressed"]
