@@ -85,7 +85,6 @@ script = ExtResource("1_61144")
 player_death_scene = ExtResource("2_xxrbr")
 footstep_scene = ExtResource("3_snjc8")
 dash_hurtbox_mask = 4
-facing = Vector2(1, 2.08165e-12)
 
 [node name="FootstepsSoundPlayer" parent="." instance=ExtResource("4_mhu1h")]
 enable_pitch_randomization = true
