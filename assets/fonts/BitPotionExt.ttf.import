@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://e8ug1t7kt31x"
-path="res://.godot/imported/bit_potion.ttf-f72fd664c896e38da8a5af57d4f97229.fontdata"
+uid="uid://cirn6qwct2t3q"
+path="res://.godot/imported/BitPotionExt.ttf-60f5b149b6e76217da237d899a0a7f10.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/bit_potion.ttf"
-dest_files=["res://.godot/imported/bit_potion.ttf-f72fd664c896e38da8a5af57d4f97229.fontdata"]
+source_file="res://assets/fonts/BitPotionExt.ttf"
+dest_files=["res://.godot/imported/BitPotionExt.ttf-60f5b149b6e76217da237d899a0a7f10.fontdata"]
 
 [params]
 
@@ -22,7 +22,7 @@ allow_system_fallback=true
 force_autohinter=false
 hinting=1
 subpixel_positioning=1
-oversampling=0.0
+oversampling=4.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
@@ -31,7 +31,7 @@ preload=[{
 "chars": [],
 "glyphs": [],
 "name": "New Configuration",
-"size": Vector2i(16, 10),
+"size": Vector2i(16, 0),
 "variation_embolden": 0.0
 }]
 language_support={}
