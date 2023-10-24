@@ -19,7 +19,6 @@ func _on_continue_button_pressed():
 	unpause()
 
 func _on_options_button_pressed():
-	print("READY")
 	var options_menu = options_menu_scene.instantiate()
 	add_child(options_menu)
 	options_menu.connect("back_pressed", Callable(self, "_on_options_back_pressed"))

@@ -12,7 +12,6 @@ var game_complete_scene: PackedScene
 func transition_to_scene(target_scene: PackedScene):
 	for button in get_tree().get_nodes_in_group("animated_button"):
 		button.disabled = true
-		print("Other")
 	await get_tree().create_timer(0.2).timeout
 	var transition_instance = screen_transition_scene.instantiate()
 	add_child(transition_instance)
