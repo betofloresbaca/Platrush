@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://ftgcgr1fn2h8"]
+[gd_scene load_steps=6 format=3 uid="uid://ftgcgr1fn2h8"]
 
 [ext_resource type="Theme" uid="uid://dmwm321ka5jog" path="res://resources/theme.tres" id="1_ij887"]
 [ext_resource type="Script" path="res://scenes/ui/game_complete.gd" id="1_w4hdj"]
 [ext_resource type="PackedScene" uid="uid://bwyw8du2pn4sv" path="res://scenes/ui/animated_button.tscn" id="2_gmeqx"]
 [ext_resource type="PackedScene" uid="uid://b51cm06wcblmv" path="res://scenes/ui/menu_background.tscn" id="2_odcm4"]
+[ext_resource type="PackedScene" uid="uid://cq7asi40yqfqc" path="res://scenes/elements/sky.tscn" id="2_odljv"]
 
 [node name="GameComplete" type="CanvasLayer"]
 script = ExtResource("1_w4hdj")
+
+[node name="Sky" parent="." instance=ExtResource("2_odljv")]
 
 [node name="MenuBackground" parent="." instance=ExtResource("2_odcm4")]
 
