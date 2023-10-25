@@ -1,12 +1,10 @@
 class_name PlayerNormalState extends State
 
-
 const max_jumps = 2
 const max_x_speed = 140
 const x_acceleration = 2000
 const jump_speed = 300
 const max_dashes = 1
-
 
 var jump_counter = 0
 var dash_counter = 0
@@ -35,7 +33,9 @@ func process(delta: float, is_state_new: bool):
 	pn.velocity.x = clampf(pn.velocity.x, -max_x_speed, max_x_speed)
 
 	# Calculate y movement
-	var can_jump = pn.is_on_floor() or not node("CoyoteTimer").is_stopped() or self.jump_counter < max_jumps
+	var can_jump = (
+		pn.is_on_floor() or not node("CoyoteTimer").is_stopped() or self.jump_counter < max_jumps
+	)
 	if move_vector.y < 0 and can_jump:
 		Helpers.apply_camera_shake(0.75)
 		pn.velocity.y = move_vector.y * jump_speed
@@ -43,7 +43,7 @@ func process(delta: float, is_state_new: bool):
 		node("CoyoteTimer").stop()
 
 	if pn.velocity.y < 0 and not Input.is_action_pressed("jump"):
-		pn.velocity.y += pn.gravity * pn.jump_termination_multiplier * delta;
+		pn.velocity.y += pn.gravity * pn.jump_termination_multiplier * delta
 		if pn.velocity.y > 0:
 			pn.velocity.y = 0
 	else:

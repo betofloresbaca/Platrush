@@ -4,8 +4,9 @@ signal percentage_changed
 
 var current_percent = 1
 
+
 func set_current_percent(percent):
-	current_percent =  clamp(percent, 0, 1);
+	current_percent = clamp(percent, 0, 1)
 	$Label.text = str(round(current_percent * 10))
 	emit_signal("percentage_changed", current_percent)
 

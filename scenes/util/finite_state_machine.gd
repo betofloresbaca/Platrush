@@ -1,10 +1,8 @@
 extends Node
 
-@export
-var states_scripts: Array[Script]
+@export var states_scripts: Array[Script]
 
-@export
-var current_state_name: String
+@export var current_state_name: String
 
 var states_map: Dictionary
 var current_state: State
@@ -30,6 +28,6 @@ func change_state(new_state_name: String):
 
 
 func _deferred_change_state(new_state_name: String):
-	if(states_map.has(new_state_name)):
+	if states_map.has(new_state_name):
 		self.is_state_new = true
 		current_state = states_map[new_state_name]

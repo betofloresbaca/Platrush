@@ -2,10 +2,11 @@ extends CharacterBody2D
 
 const gravity = 1000
 
+
 func _ready():
 	$DeathSoundPlayer.play()
 	if velocity.x < 0:
-		scale = Vector2(-1,1)
+		scale = Vector2(-1, 1)
 
 
 func _process(delta):

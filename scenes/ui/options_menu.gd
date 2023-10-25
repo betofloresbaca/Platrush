@@ -11,8 +11,10 @@ var sfx_volume_control = $MarginContainer/PanelContainer/MarginContainer/VBoxCon
 
 var full_screen = false
 
+
 func _ready():
 	_update_initial_volume_settings()
+
 
 func _on_window_mode_button_pressed():
 	full_screen = not full_screen
@@ -22,8 +24,9 @@ func _on_window_mode_button_pressed():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	update_button_text()
 
+
 func update_button_text():
-	window_mode_button.text = "FULL SCREEN" if full_screen else "WINDOWED" 
+	window_mode_button.text = "FULL SCREEN" if full_screen else "WINDOWED"
 
 
 func _on_back_button_pressed():
@@ -55,4 +58,3 @@ func _get_bus_volume(bus_name):
 	var busIdx = AudioServer.get_bus_index(bus_name)
 	var volume_db = AudioServer.get_bus_volume_db(busIdx)
 	return db_to_linear(volume_db)
-

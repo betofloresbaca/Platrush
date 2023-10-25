@@ -1,13 +1,11 @@
 extends Node
 
-@export
-var screen_transition_scene : PackedScene
+@export var screen_transition_scene: PackedScene
 
-@export
-var main_menu_scene: PackedScene
+@export var main_menu_scene: PackedScene
 
-@export
-var game_complete_scene: PackedScene
+@export var game_complete_scene: PackedScene
+
 
 func transition_to_scene(target_scene: PackedScene):
 	for button in get_tree().get_nodes_in_group("animated_button"):
@@ -21,6 +19,7 @@ func transition_to_scene(target_scene: PackedScene):
 
 func transition_to_menu():
 	transition_to_scene(main_menu_scene)
-	
+
+
 func transition_to_game_complete():
 	transition_to_scene(game_complete_scene)

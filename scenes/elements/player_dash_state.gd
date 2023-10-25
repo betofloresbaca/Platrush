@@ -1,6 +1,5 @@
 class_name PlayerDashState extends State
 
-
 const max_dash_speed = 600
 const min_dash_speed = 200
 
@@ -8,6 +7,7 @@ const min_dash_speed = 200
 func _init(_parent_node: Node):
 	super(_parent_node)
 	self.name = "DASH"
+
 
 func process(delta: float, is_state_new: bool):
 	super.process(delta, is_state_new)

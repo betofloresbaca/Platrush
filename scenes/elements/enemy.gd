@@ -1,9 +1,7 @@
 extends CharacterBody2D
 
-@export
-var enemy_death_scene: PackedScene
-@export
-var is_spawning = true
+@export var enemy_death_scene: PackedScene
+@export var is_spawning = true
 
 const max_speed = 25
 const gravity = 500
@@ -11,8 +9,10 @@ const gravity = 500
 var direction: Vector2
 var start_direction = Vector2.RIGHT
 
+
 func _ready():
 	direction = start_direction
+
 
 func _process(delta):
 	if is_spawning:
@@ -26,8 +26,10 @@ func _process(delta):
 func _on_bounce_detector_area_entered(_area):
 	direction.x *= -1
 
+
 func _on_hurtbox_area_area_entered(_area):
 	kill.call_deferred()
+
 
 func kill():
 	var death_instance = enemy_death_scene.instantiate()
@@ -36,4 +38,3 @@ func kill():
 	if velocity.x > 0:
 		death_instance.scale = Vector2(-1, 1)
 	queue_free()
-	

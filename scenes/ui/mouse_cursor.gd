@@ -2,6 +2,7 @@ extends CanvasLayer
 
 var previous_mouse_position = Vector2.ZERO
 
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
@@ -13,7 +14,7 @@ func _process(_delta):
 		$AnimationPlayer.play("click")
 		previous_mouse_position = Vector2.ZERO
 	mouse_auto_show_hide(new_mouse_position)
-	
+
 
 func mouse_auto_show_hide(mouse_position):
 	var mouse_activity = false
@@ -26,6 +27,7 @@ func mouse_auto_show_hide(mouse_position):
 	if not mouse_activity and $HideTimer.is_stopped():
 		$HideTimer.start()
 	previous_mouse_position = mouse_position
+
 
 func _on_hide_timer_timeout():
 	$Sprite2D.hide()

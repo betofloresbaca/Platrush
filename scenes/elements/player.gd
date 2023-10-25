@@ -7,11 +7,9 @@ signal died
 @export_flags_2d_physics var dash_hurtbox_mask
 @export var facing = Vector2.RIGHT
 
-
-const gravity =  1000
+const gravity = 1000
 const lerp_pow = -40
 const jump_termination_multiplier = 5
-
 
 var is_dying = false
 
@@ -47,7 +45,7 @@ func _on_win_area_entered(_area):
 
 
 func _on_animated_sprite_2d_frame_changed():
-	if $AnimatedSprite2D.animation == "run":# and $AnimatedSprite2D.frame == 0:
+	if $AnimatedSprite2D.animation == "run":  # and $AnimatedSprite2D.frame == 0:
 		spawn_footstep()
 
 
