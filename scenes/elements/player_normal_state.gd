@@ -34,7 +34,9 @@ func process(delta: float, is_state_new: bool):
 
 	# Calculate y movement
 	var can_jump = (
-		pn.is_on_floor() or not node("CoyoteTimer").is_stopped() or self.jump_counter < max_jumps
+		pn.is_on_floor()
+		or not node("CoyoteTimer").is_stopped()
+		or self.jump_counter < max_jumps
 	)
 	if move_vector.y < 0 and can_jump:
 		Helpers.apply_camera_shake(0.75)

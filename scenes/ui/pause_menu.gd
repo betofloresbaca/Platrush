@@ -25,7 +25,9 @@ func _on_continue_button_pressed():
 func _on_options_button_pressed():
 	var options_menu = options_menu_scene.instantiate()
 	add_child(options_menu)
-	options_menu.connect("back_pressed", Callable(self, "_on_options_back_pressed"))
+	options_menu.connect(
+		"back_pressed", Callable(self, "_on_options_back_pressed")
+	)
 	$MarginContainer.hide()
 
 

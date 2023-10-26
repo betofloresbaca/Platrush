@@ -10,7 +10,9 @@ func change_level(level_index):
 	if current_level_index >= level_scenes.size():
 		ScreenTransitionManager.transition_to_game_complete()
 	else:
-		ScreenTransitionManager.transition_to_scene(level_scenes[current_level_index])
+		ScreenTransitionManager.transition_to_scene(
+			level_scenes[current_level_index]
+		)
 
 
 func increment_level():

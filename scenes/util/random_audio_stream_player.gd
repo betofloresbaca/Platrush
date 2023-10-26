@@ -34,5 +34,7 @@ func _play_stream(stream_player):
 	# It is a raw AudioStreamPlayer
 	if "playing" in stream_player:
 		if enable_pitch_randomization:
-			stream_player.pitch_scale = rng.randf_range(min_pitch_scale, max_pitch_scale)
+			stream_player.pitch_scale = rng.randf_range(
+				min_pitch_scale, max_pitch_scale
+			)
 	stream_player.play()

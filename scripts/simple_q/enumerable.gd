@@ -89,7 +89,9 @@ func join(other: Enumerable, self_selector: Callable, other_selector: Callable):
 	for self_i in range(self.count()):
 		for other_i in range(other.count()):
 			if self_keys.at(self_i) == other_keys.at(other_i):
-				result.append(Enumerable.new([self.at(self_i), other.at(other_i)], false))
+				result.append(
+					Enumerable.new([self.at(self_i), other.at(other_i)], false)
+				)
 	return Enumerable.new(result)
 
 

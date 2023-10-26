@@ -20,7 +20,10 @@ func _ready():
 
 func get_movement_vector():
 	var move_vector = Vector2.ZERO
-	move_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	move_vector.x = (
+		Input.get_action_strength("move_right")
+		- Input.get_action_strength("move_left")
+	)
 	move_vector.y = int(Input.is_action_just_pressed("jump")) * -1
 	return move_vector
 

@@ -45,7 +45,9 @@ func create_player():
 
 func register_player(player):
 	current_player_node = player
-	current_player_node.connect("died", Callable(self, "_on_player_died"), CONNECT_DEFERRED)
+	current_player_node.connect(
+		"died", Callable(self, "_on_player_died"), CONNECT_DEFERRED
+	)
 
 
 func _on_player_died():
