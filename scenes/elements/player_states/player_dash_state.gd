@@ -5,6 +5,7 @@ class_name PlayerDashState extends State
 const max_dash_speed = 600
 const min_dash_speed = 200
 
+
 func enter():
 	super.enter()
 	player.get_node("DashAudioPlayer").play()
@@ -21,6 +22,7 @@ func enter():
 		vel_mod = 1 if player.get_node("AnimatedSprite2D").flip_h else -1
 	player.velocity.x = vel_mod * max_dash_speed
 	player.velocity.y = 0
+
 
 func process(delta: float):
 	super.process(delta)

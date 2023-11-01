@@ -17,11 +17,13 @@ func init():
 	super.init()
 	self.default_hurtbox_mask = player.get_node("Hurtbox").collision_mask
 
+
 func enter():
 	super.enter()
 	player.get_node("DashParticles").emitting = false
 	player.get_node("EnemyKill/CollisionShape2D").disabled = true
 	player.get_node("Hurtbox").collision_mask = default_hurtbox_mask
+
 
 func process(delta: float):
 	super.process(delta)
@@ -29,7 +31,9 @@ func process(delta: float):
 	# Calculate x movement
 	player.velocity.x += move_vector.x * x_acceleration * delta
 	if move_vector.x == 0:
-		player.velocity.x = lerpf(0, player.velocity.x, pow(2, player.lerp_pow * delta))
+		player.velocity.x = lerpf(
+			0, player.velocity.x, pow(2, player.lerp_pow * delta)
+		)
 	player.velocity.x = clampf(player.velocity.x, -max_x_speed, max_x_speed)
 
 	# Calculate y movement
@@ -45,7 +49,9 @@ func process(delta: float):
 		player.get_node("CoyoteTimer").stop()
 
 	if player.velocity.y < 0 and not Input.is_action_pressed("jump"):
-		player.velocity.y += player.gravity * player.jump_termination_multiplier * delta
+		player.velocity.y += (
+			player.gravity * player.jump_termination_multiplier * delta
+		)
 		if player.velocity.y > 0:
 			player.velocity.y = 0
 	else:

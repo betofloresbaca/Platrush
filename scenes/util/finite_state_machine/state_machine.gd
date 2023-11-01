@@ -7,8 +7,10 @@ class_name StateMachine
 var current_state: State
 var states: Dictionary = {}
 
+
 func transition(state_name):
 	_on_state_transitioned(state_name)
+
 
 func _ready():
 	for child in get_children():
@@ -19,6 +21,7 @@ func _ready():
 	if initial_state:
 		current_state = initial_state
 		initial_state.enter()
+
 
 func _process(delta):
 	if current_state:
