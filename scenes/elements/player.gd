@@ -44,7 +44,7 @@ func _on_hurtbox_area_entered(_area):
 
 
 func _on_win_area_entered(_area):
-	$MovementStateMachine.change_state("INPUT_DISABLED")
+	$StateMachine.transition("InputDisabled")
 
 
 func _on_animated_sprite_2d_frame_changed():

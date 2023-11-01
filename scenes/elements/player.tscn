@@ -5,15 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://cwcddy80ujjr6" path="res://scenes/elements/player_death.tscn" id="2_xxrbr"]
 [ext_resource type="Texture2D" uid="uid://dcv21jpo7lych" path="res://assets/player/player_1.png" id="3_g03sr"]
 [ext_resource type="PackedScene" uid="uid://b6oi537lhw6vk" path="res://scenes/elements/footstep_particles.tscn" id="3_snjc8"]
-[ext_resource type="PackedScene" uid="uid://eph75scbuut7" path="res://scenes/util/finite_state_machine.tscn" id="4_m0sv7"]
+[ext_resource type="Script" path="res://scenes/util/finite_state_machine/state_machine.gd" id="4_dcmnj"]
 [ext_resource type="PackedScene" uid="uid://ckx3tmvgx6qcn" path="res://scenes/util/random_audio_stream_player.tscn" id="4_mhu1h"]
 [ext_resource type="AudioStream" uid="uid://caktj2wskpvqy" path="res://assets/sounds/footstep_wood_001.ogg" id="5_4kn7x"]
-[ext_resource type="Script" path="res://scenes/elements/player_dash_state.gd" id="5_68gky"]
+[ext_resource type="Script" path="res://scenes/elements/player_states/player_normal_state.gd" id="5_blhkc"]
 [ext_resource type="Shader" path="res://scenes/elements/player.gdshader" id="5_k0a0w"]
-[ext_resource type="Script" path="res://scenes/elements/player_normal_state.gd" id="6_bqcth"]
 [ext_resource type="AudioStream" uid="uid://c5fxe8n7to8q4" path="res://assets/sounds/footstep_wood_002.ogg" id="6_c6oah"]
-[ext_resource type="Script" path="res://scenes/elements/player_input_disabled_state.gd" id="7_dn3ca"]
+[ext_resource type="Script" path="res://scenes/elements/player_states/player_dash_state.gd" id="6_e86wy"]
 [ext_resource type="AudioStream" uid="uid://di452ohmaseid" path="res://assets/sounds/footstep_wood_003.ogg" id="7_feybj"]
+[ext_resource type="Script" path="res://scenes/elements/player_states/player_input_disabled_state.gd" id="7_j506t"]
 [ext_resource type="AudioStream" uid="uid://dybi5w1bkl2v" path="res://assets/sounds/footstep_wood_004.ogg" id="8_5wgrw"]
 [ext_resource type="AudioStream" uid="uid://bivglbnbjjqje" path="res://assets/sounds/footstep_concrete_000.ogg" id="10_vxye2"]
 [ext_resource type="AudioStream" uid="uid://l1e3bf68bqpx" path="res://assets/sounds/footstep_concrete_001.ogg" id="11_x0uwr"]
@@ -90,9 +90,21 @@ player_death_scene = ExtResource("2_xxrbr")
 footstep_scene = ExtResource("3_snjc8")
 dash_hurtbox_mask = 4
 
-[node name="MovementStateMachine" parent="." instance=ExtResource("4_m0sv7")]
-states_scripts = Array[Script]([ExtResource("6_bqcth"), ExtResource("5_68gky"), ExtResource("7_dn3ca")])
-current_state_name = "NORMAL"
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_dcmnj")
+initial_state = NodePath("Normal")
+
+[node name="Normal" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("5_blhkc")
+player = NodePath("../..")
+
+[node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("6_e86wy")
+player = NodePath("../..")
+
+[node name="InputDisabled" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("7_j506t")
+player = NodePath("../..")
 
 [node name="FootstepsSoundPlayer" parent="." instance=ExtResource("4_mhu1h")]
 enable_pitch_randomization = true
