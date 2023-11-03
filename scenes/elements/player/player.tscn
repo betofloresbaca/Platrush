@@ -1,29 +1,29 @@
 [gd_scene load_steps=31 format=3 uid="uid://co73jgm5t0t77"]
 
-[ext_resource type="Script" path="res://scenes/elements/player.gd" id="1_61144"]
-[ext_resource type="Texture2D" uid="uid://2xf3vk0m7l0d" path="res://assets/player/player_0.png" id="2_v1cfc"]
-[ext_resource type="PackedScene" uid="uid://cwcddy80ujjr6" path="res://scenes/elements/player_death.tscn" id="2_xxrbr"]
-[ext_resource type="Texture2D" uid="uid://dcv21jpo7lych" path="res://assets/player/player_1.png" id="3_g03sr"]
-[ext_resource type="PackedScene" uid="uid://b6oi537lhw6vk" path="res://scenes/elements/footstep_particles.tscn" id="3_snjc8"]
-[ext_resource type="Script" path="res://scenes/util/finite_state_machine/state_machine.gd" id="4_dcmnj"]
-[ext_resource type="PackedScene" uid="uid://ckx3tmvgx6qcn" path="res://scenes/util/random_audio_stream_player.tscn" id="4_mhu1h"]
-[ext_resource type="AudioStream" uid="uid://caktj2wskpvqy" path="res://assets/sounds/footstep_wood_001.ogg" id="5_4kn7x"]
-[ext_resource type="Script" path="res://scenes/elements/player_states/player_normal_state.gd" id="5_blhkc"]
-[ext_resource type="Shader" path="res://scenes/elements/player.gdshader" id="5_k0a0w"]
-[ext_resource type="AudioStream" uid="uid://c5fxe8n7to8q4" path="res://assets/sounds/footstep_wood_002.ogg" id="6_c6oah"]
-[ext_resource type="Script" path="res://scenes/elements/player_states/player_dash_state.gd" id="6_e86wy"]
-[ext_resource type="AudioStream" uid="uid://di452ohmaseid" path="res://assets/sounds/footstep_wood_003.ogg" id="7_feybj"]
-[ext_resource type="Script" path="res://scenes/elements/player_states/player_input_disabled_state.gd" id="7_j506t"]
-[ext_resource type="AudioStream" uid="uid://dybi5w1bkl2v" path="res://assets/sounds/footstep_wood_004.ogg" id="8_5wgrw"]
-[ext_resource type="AudioStream" uid="uid://bivglbnbjjqje" path="res://assets/sounds/footstep_concrete_000.ogg" id="10_vxye2"]
-[ext_resource type="AudioStream" uid="uid://l1e3bf68bqpx" path="res://assets/sounds/footstep_concrete_001.ogg" id="11_x0uwr"]
-[ext_resource type="AudioStream" uid="uid://cu3qclj25yfu" path="res://assets/sounds/footstep_concrete_002.ogg" id="12_dqus7"]
-[ext_resource type="AudioStream" uid="uid://b5gkfkpaasc7u" path="res://assets/sounds/footstep_concrete_003.ogg" id="13_3i2jf"]
-[ext_resource type="AudioStream" uid="uid://bxs31piu0dgr4" path="res://assets/sounds/footstep_concrete_004.ogg" id="14_lqmsy"]
-[ext_resource type="AudioStream" uid="uid://cq3gp18ih180p" path="res://assets/sounds/impactBell_heavy_004.ogg" id="14_pvhtr"]
+[ext_resource type="Script" path="res://scenes/elements/player/player.gd" id="1_vpdhh"]
+[ext_resource type="PackedScene" uid="uid://cwcddy80ujjr6" path="res://scenes/elements/player/player_death.tscn" id="2_rrmk8"]
+[ext_resource type="PackedScene" uid="uid://b6oi537lhw6vk" path="res://scenes/elements/footstep_particles.tscn" id="3_rvm6q"]
+[ext_resource type="Script" path="res://scenes/util/finite_state_machine/state_machine.gd" id="4_iuqk4"]
+[ext_resource type="Script" path="res://scenes/elements/player/player_states/player_normal_state.gd" id="5_l7431"]
+[ext_resource type="Script" path="res://scenes/elements/player/player_states/player_dash_state.gd" id="6_pr06t"]
+[ext_resource type="Script" path="res://scenes/elements/player/player_states/player_input_disabled_state.gd" id="7_82wom"]
+[ext_resource type="PackedScene" uid="uid://ckx3tmvgx6qcn" path="res://scenes/util/random_audio_stream_player.tscn" id="8_y2s71"]
+[ext_resource type="AudioStream" uid="uid://caktj2wskpvqy" path="res://assets/sounds/footstep_wood_001.ogg" id="9_40whi"]
+[ext_resource type="AudioStream" uid="uid://c5fxe8n7to8q4" path="res://assets/sounds/footstep_wood_002.ogg" id="10_26b3f"]
+[ext_resource type="AudioStream" uid="uid://di452ohmaseid" path="res://assets/sounds/footstep_wood_003.ogg" id="11_ex6ai"]
+[ext_resource type="AudioStream" uid="uid://dybi5w1bkl2v" path="res://assets/sounds/footstep_wood_004.ogg" id="12_tmmi0"]
+[ext_resource type="AudioStream" uid="uid://b5gkfkpaasc7u" path="res://assets/sounds/footstep_concrete_003.ogg" id="13_djagl"]
+[ext_resource type="AudioStream" uid="uid://bxs31piu0dgr4" path="res://assets/sounds/footstep_concrete_004.ogg" id="14_5nusg"]
+[ext_resource type="AudioStream" uid="uid://bivglbnbjjqje" path="res://assets/sounds/footstep_concrete_000.ogg" id="15_y24pq"]
+[ext_resource type="AudioStream" uid="uid://l1e3bf68bqpx" path="res://assets/sounds/footstep_concrete_001.ogg" id="16_bbp5d"]
+[ext_resource type="AudioStream" uid="uid://cu3qclj25yfu" path="res://assets/sounds/footstep_concrete_002.ogg" id="17_hjynu"]
+[ext_resource type="AudioStream" uid="uid://cq3gp18ih180p" path="res://assets/sounds/impactBell_heavy_004.ogg" id="18_dt65n"]
+[ext_resource type="Shader" path="res://scenes/elements/player/player.gdshader" id="19_80wg7"]
+[ext_resource type="Texture2D" uid="uid://2xf3vk0m7l0d" path="res://assets/player/player_0.png" id="20_ou88g"]
+[ext_resource type="Texture2D" uid="uid://dcv21jpo7lych" path="res://assets/player/player_1.png" id="21_xbms4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o66uq"]
-shader = ExtResource("5_k0a0w")
+shader = ExtResource("19_80wg7")
 shader_parameter/base_color = Color(0.294118, 0.796078, 0.623529, 1)
 
 [sub_resource type="Curve" id="Curve_a88fb"]
@@ -44,7 +44,7 @@ scale_curve = SubResource("CurveTexture_yeqbm")
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_v1cfc")
+"texture": ExtResource("20_ou88g")
 }],
 "loop": true,
 "name": &"idle",
@@ -52,7 +52,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_g03sr")
+"texture": ExtResource("21_xbms4")
 }],
 "loop": true,
 "name": &"jump",
@@ -60,10 +60,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_g03sr")
+"texture": ExtResource("21_xbms4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_v1cfc")
+"texture": ExtResource("20_ou88g")
 }],
 "loop": true,
 "name": &"run",
@@ -85,82 +85,82 @@ size = Vector2(10, 16)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
 collision_mask = 16
-script = ExtResource("1_61144")
-player_death_scene = ExtResource("2_xxrbr")
-footstep_scene = ExtResource("3_snjc8")
+script = ExtResource("1_vpdhh")
+player_death_scene = ExtResource("2_rrmk8")
+footstep_scene = ExtResource("3_rvm6q")
 dash_hurtbox_mask = 4
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("4_dcmnj")
+script = ExtResource("4_iuqk4")
 initial_state = NodePath("Normal")
 
 [node name="Normal" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
-script = ExtResource("5_blhkc")
+script = ExtResource("5_l7431")
 player = NodePath("../..")
 
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
-script = ExtResource("6_e86wy")
+script = ExtResource("6_pr06t")
 player = NodePath("../..")
 
 [node name="InputDisabled" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
-script = ExtResource("7_j506t")
+script = ExtResource("7_82wom")
 player = NodePath("../..")
 
-[node name="FootstepsSoundPlayer" parent="." instance=ExtResource("4_mhu1h")]
+[node name="FootstepsSoundPlayer" parent="." instance=ExtResource("8_y2s71")]
 enable_pitch_randomization = true
 
 [node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
-stream = ExtResource("5_4kn7x")
+stream = ExtResource("9_40whi")
 bus = &"Footsteps"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
-stream = ExtResource("6_c6oah")
+stream = ExtResource("10_26b3f")
 bus = &"Footsteps"
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
-stream = ExtResource("7_feybj")
+stream = ExtResource("11_ex6ai")
 bus = &"Footsteps"
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
-stream = ExtResource("8_5wgrw")
+stream = ExtResource("12_tmmi0")
 bus = &"Footsteps"
 
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
-stream = ExtResource("13_3i2jf")
+stream = ExtResource("13_djagl")
 bus = &"Footsteps"
 
 [node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
-stream = ExtResource("14_lqmsy")
+stream = ExtResource("14_5nusg")
 bus = &"Footsteps"
 
 [node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
-stream = ExtResource("10_vxye2")
+stream = ExtResource("15_y24pq")
 bus = &"Footsteps"
 
 [node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
-stream = ExtResource("11_x0uwr")
+stream = ExtResource("16_bbp5d")
 bus = &"Footsteps"
 
 [node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
-stream = ExtResource("12_dqus7")
+stream = ExtResource("17_hjynu")
 bus = &"Footsteps"
 
 [node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
-stream = ExtResource("13_3i2jf")
+stream = ExtResource("13_djagl")
 bus = &"Footsteps"
 
 [node name="AudioStreamPlayer11" type="AudioStreamPlayer" parent="FootstepsSoundPlayer"]
-stream = ExtResource("14_lqmsy")
+stream = ExtResource("14_5nusg")
 bus = &"Footsteps"
 
-[node name="DashAudioPlayer" parent="." instance=ExtResource("4_mhu1h")]
+[node name="DashAudioPlayer" parent="." instance=ExtResource("8_y2s71")]
 enable_pitch_randomization = true
 min_pitch_scale = 0.8
 max_pitch_scale = 1.0
 allow_sound_overlaping = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DashAudioPlayer"]
-stream = ExtResource("14_pvhtr")
+stream = ExtResource("18_dt65n")
 max_polyphony = 5
 bus = &"PlayerDash"
 
@@ -175,7 +175,7 @@ position = Vector2(0, -12)
 emitting = false
 amount = 32
 process_material = SubResource("ParticleProcessMaterial_vy65x")
-texture = ExtResource("2_v1cfc")
+texture = ExtResource("20_ou88g")
 lifetime = 0.4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
