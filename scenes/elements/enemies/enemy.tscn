@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://cieggjgnlbhli"]
 
-[ext_resource type="Script" path="res://scenes/elements/enemy.gd" id="1_b6tpl"]
+[ext_resource type="Script" path="res://scenes/elements/enemies/enemy.gd" id="1_b6tpl"]
 [ext_resource type="Texture2D" uid="uid://c868yxno62i1r" path="res://assets/enemy/character_0015.png" id="1_kegli"]
-[ext_resource type="PackedScene" uid="uid://dopn5402xhhe6" path="res://scenes/elements/enemy_death.tscn" id="2_7p2fa"]
+[ext_resource type="PackedScene" uid="uid://dopn5402xhhe6" path="res://scenes/elements/enemies/enemy_death.tscn" id="2_7p2fa"]
 [ext_resource type="Texture2D" uid="uid://b170cm5c0px1r" path="res://assets/enemy/character_0016.png" id="2_ouxh4"]
 [ext_resource type="Texture2D" uid="uid://dj2vbssxu2ekl" path="res://assets/enemy/character_0017.png" id="5_6a3p0"]
 

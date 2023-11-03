@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://d4nxyhocflhsd" path="res://scenes/levels/base_level.tscn" id="1_5ski3"]
 [ext_resource type="PackedScene" uid="uid://cdcchbq3upa8v" path="res://scenes/elements/coin.tscn" id="2_6d6c1"]
-[ext_resource type="PackedScene" uid="uid://cv7a1psnlesil" path="res://scenes/elements/enemy_spawner.tscn" id="2_8wwoa"]
-[ext_resource type="PackedScene" uid="uid://b0bset8ndsv07" path="res://scenes/elements/enemy_bounce.tscn" id="3_sbp8a"]
+[ext_resource type="PackedScene" uid="uid://cv7a1psnlesil" path="res://scenes/elements/enemies/enemy_spawner.tscn" id="2_8wwoa"]
+[ext_resource type="PackedScene" uid="uid://b0bset8ndsv07" path="res://scenes/elements/enemies/enemy_bounce.tscn" id="3_sbp8a"]
 
 [node name="Level_003" instance=ExtResource("1_5ski3")]
 

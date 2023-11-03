@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cv7a1psnlesil"]
 
-[ext_resource type="Script" path="res://scenes/elements/enemy_spawner.gd" id="1_371bx"]
-[ext_resource type="PackedScene" uid="uid://cieggjgnlbhli" path="res://scenes/elements/enemy.tscn" id="2_2ycfk"]
+[ext_resource type="Script" path="res://scenes/elements/enemies/enemy_spawner.gd" id="1_371bx"]
+[ext_resource type="PackedScene" uid="uid://cieggjgnlbhli" path="res://scenes/elements/enemies/enemy.tscn" id="2_2ycfk"]
 
 [node name="EnemySpawner" type="Marker2D"]
 gizmo_extents = 18.0

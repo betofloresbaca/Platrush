@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://dopn5402xhhe6"]
 
-[ext_resource type="Script" path="res://scenes/elements/enemy_death.gd" id="1_df2s7"]
+[ext_resource type="Script" path="res://scenes/elements/enemies/enemy_death.gd" id="1_df2s7"]
 [ext_resource type="Texture2D" uid="uid://b170cm5c0px1r" path="res://assets/enemy/character_0016.png" id="1_xihp2"]
 [ext_resource type="PackedScene" uid="uid://ckx3tmvgx6qcn" path="res://scenes/util/random_audio_stream_player.tscn" id="2_oowvw"]
 [ext_resource type="AudioStream" uid="uid://d112bbe1g01pi" path="res://assets/sounds/impactMetal_heavy_000.ogg" id="3_0o2e7"]

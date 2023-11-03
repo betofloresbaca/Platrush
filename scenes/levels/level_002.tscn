@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cnle2s2e4s7b3"]
 
 [ext_resource type="PackedScene" uid="uid://d4nxyhocflhsd" path="res://scenes/levels/base_level.tscn" id="1_qsol7"]
-[ext_resource type="PackedScene" uid="uid://cv7a1psnlesil" path="res://scenes/elements/enemy_spawner.tscn" id="2_in3pb"]
+[ext_resource type="PackedScene" uid="uid://cv7a1psnlesil" path="res://scenes/elements/enemies/enemy_spawner.tscn" id="2_in3pb"]
 [ext_resource type="PackedScene" uid="uid://cdcchbq3upa8v" path="res://scenes/elements/coin.tscn" id="2_irgjc"]
-[ext_resource type="PackedScene" uid="uid://b0bset8ndsv07" path="res://scenes/elements/enemy_bounce.tscn" id="3_qsj7w"]
+[ext_resource type="PackedScene" uid="uid://b0bset8ndsv07" path="res://scenes/elements/enemies/enemy_bounce.tscn" id="3_qsj7w"]
 [ext_resource type="PackedScene" uid="uid://cqwgtdj1plhob" path="res://scenes/elements/tutorial_sign.tscn" id="5_2v1c5"]
 
 [node name="Level_002" instance=ExtResource("1_qsol7")]
