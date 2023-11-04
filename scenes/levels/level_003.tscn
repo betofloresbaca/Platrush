@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://xl15j7nl2cwe"]
+[gd_scene load_steps=6 format=3 uid="uid://xl15j7nl2cwe"]
 
 [ext_resource type="PackedScene" uid="uid://d4nxyhocflhsd" path="res://scenes/levels/base_level.tscn" id="1_5ski3"]
 [ext_resource type="PackedScene" uid="uid://cdcchbq3upa8v" path="res://scenes/elements/coin.tscn" id="2_6d6c1"]
 [ext_resource type="PackedScene" uid="uid://cv7a1psnlesil" path="res://scenes/elements/enemies/enemy_spawner.tscn" id="2_8wwoa"]
 [ext_resource type="PackedScene" uid="uid://b0bset8ndsv07" path="res://scenes/elements/enemies/enemy_bounce.tscn" id="3_sbp8a"]
+[ext_resource type="PackedScene" uid="uid://cieggjgnlbhli" path="res://scenes/elements/enemies/ground_enemy/ground_enemy.tscn" id="4_ssbni"]
 
 [node name="Level_003" instance=ExtResource("1_5ski3")]
 
@@ -105,84 +106,157 @@ position = Vector2(895, -396)
 
 [node name="EnemySpawner" parent="Enemies" index="0" instance=ExtResource("2_8wwoa")]
 position = Vector2(148, 0)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner2" parent="Enemies" index="1" instance=ExtResource("2_8wwoa")]
 position = Vector2(175, -18)
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(1, 0)
+}
 
 [node name="EnemySpawner3" parent="Enemies" index="2" instance=ExtResource("2_8wwoa")]
 position = Vector2(202, -18)
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(1, 0)
+}
 
 [node name="EnemySpawner4" parent="Enemies" index="3" instance=ExtResource("2_8wwoa")]
 position = Vector2(301, -18)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner5" parent="Enemies" index="4" instance=ExtResource("2_8wwoa")]
 position = Vector2(328, -18)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner6" parent="Enemies" index="5" instance=ExtResource("2_8wwoa")]
 position = Vector2(571, -72)
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(1, 0)
+}
 
 [node name="EnemySpawner7" parent="Enemies" index="6" instance=ExtResource("2_8wwoa")]
 position = Vector2(589, -72)
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(1, 0)
+}
 
 [node name="EnemySpawner8" parent="Enemies" index="7" instance=ExtResource("2_8wwoa")]
 position = Vector2(607, -72)
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(1, 0)
+}
 
 [node name="EnemySpawner9" parent="Enemies" index="8" instance=ExtResource("2_8wwoa")]
 position = Vector2(625, -72)
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(1, 0)
+}
 
 [node name="EnemySpawner10" parent="Enemies" index="9" instance=ExtResource("2_8wwoa")]
 position = Vector2(643, -72)
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(1, 0)
+}
 
 [node name="EnemySpawner11" parent="Enemies" index="10" instance=ExtResource("2_8wwoa")]
 position = Vector2(724, -72)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner12" parent="Enemies" index="11" instance=ExtResource("2_8wwoa")]
 position = Vector2(742, -72)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner13" parent="Enemies" index="12" instance=ExtResource("2_8wwoa")]
 position = Vector2(760, -72)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner14" parent="Enemies" index="13" instance=ExtResource("2_8wwoa")]
 position = Vector2(778, -72)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner15" parent="Enemies" index="14" instance=ExtResource("2_8wwoa")]
 position = Vector2(796, -72)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner16" parent="Enemies" index="15" instance=ExtResource("2_8wwoa")]
 position = Vector2(796, -378)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner17" parent="Enemies" index="16" instance=ExtResource("2_8wwoa")]
 position = Vector2(778, -378)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner18" parent="Enemies" index="17" instance=ExtResource("2_8wwoa")]
 position = Vector2(760, -378)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner19" parent="Enemies" index="18" instance=ExtResource("2_8wwoa")]
 position = Vector2(742, -378)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner20" parent="Enemies" index="19" instance=ExtResource("2_8wwoa")]
 position = Vector2(724, -378)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner21" parent="Enemies" index="20" instance=ExtResource("2_8wwoa")]
 position = Vector2(535, -396)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemySpawner22" parent="Enemies" index="21" instance=ExtResource("2_8wwoa")]
 position = Vector2(517, -396)
-start_direction = 1
+enemy_scene = ExtResource("4_ssbni")
+parameters = {
+"start_direction": Vector2(-1, 0)
+}
 
 [node name="EnemyBounce" parent="Enemies" index="22" instance=ExtResource("3_sbp8a")]
 position = Vector2(18, 0)

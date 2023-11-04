@@ -1,25 +1,19 @@
-extends Marker2D
-
-enum Direction { RIGHT, LEFT }
+class_name EnemySpawner extends Marker2D
 
 @export var enemy_scene: PackedScene
-
-@export var start_direction = Direction.RIGHT
+@export var parameters: Dictionary
 
 var current_enemy_node = null
 var spawn_on_next_tick = false
 
 
 func _ready():
-	call_deferred("spawn_enemy")
+	spawn_enemy.call_deferred()
 
 
 func spawn_enemy():
 	current_enemy_node = enemy_scene.instantiate()
-	if start_direction == Direction.RIGHT:
-		current_enemy_node.start_direction = Vector2.RIGHT
-	else:
-		current_enemy_node.start_direction = Vector2.LEFT
+	current_enemy_node.params(parameters)
 	get_parent().add_child(current_enemy_node)
 	current_enemy_node.global_position = global_position
 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctdnuyq4jryrl"]
+[gd_scene load_steps=5 format=3 uid="uid://ctdnuyq4jryrl"]
 
 [ext_resource type="PackedScene" uid="uid://d4nxyhocflhsd" path="res://scenes/levels/base_level.tscn" id="1_21qpr"]
 [ext_resource type="PackedScene" uid="uid://cv7a1psnlesil" path="res://scenes/elements/enemies/enemy_spawner.tscn" id="2_pgenm"]
+[ext_resource type="PackedScene" uid="uid://cdlt4kgrd8vxk" path="res://scenes/elements/enemies/flying_enemy/flying_enemy.tscn" id="3_4sp2t"]
+[ext_resource type="PackedScene" uid="uid://b0bset8ndsv07" path="res://scenes/elements/enemies/enemy_bounce.tscn" id="4_mhtq3"]
 
 [node name="BaseLevel" instance=ExtResource("1_21qpr")]
 
@@ -12,4 +14,14 @@ layer_0/tile_data = PackedInt32Array(131077, 131072, 11, 65541, 131072, 10, 5, 1
 position = Vector2(72, 0)
 
 [node name="EnemySpawner" parent="Enemies" index="0" instance=ExtResource("2_pgenm")]
-position = Vector2(-55, -11)
+position = Vector2(-78, -93)
+enemy_scene = ExtResource("3_4sp2t")
+parameters = {
+"start_direction": Vector2(1, 0)
+}
+
+[node name="EnemyBounce" parent="Enemies" index="1" instance=ExtResource("4_mhtq3")]
+position = Vector2(90, -84)
+
+[node name="EnemyBounce2" parent="Enemies" index="2" instance=ExtResource("4_mhtq3")]
+position = Vector2(-155, -83)

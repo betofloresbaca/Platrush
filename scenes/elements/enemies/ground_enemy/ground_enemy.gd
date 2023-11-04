@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name GroundEnemy extends Enemy
 
 @export var enemy_death_scene: PackedScene
 @export var is_spawning = true
@@ -7,11 +7,10 @@ const max_speed = 25
 const gravity = 500
 
 var direction: Vector2
-var start_direction = Vector2.RIGHT
 
 
-func _ready():
-	direction = start_direction
+func params(parameters: Dictionary):
+	direction = parameters.get("start_direction")
 
 
 func _process(delta):
