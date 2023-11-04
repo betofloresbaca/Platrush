@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://cv7a1psnlesil"]
 
 [ext_resource type="Script" path="res://scenes/elements/enemies/enemy_spawner.gd" id="1_371bx"]
-[ext_resource type="PackedScene" uid="uid://cieggjgnlbhli" path="res://scenes/elements/enemies/enemy.tscn" id="2_2ycfk"]
+[ext_resource type="PackedScene" uid="uid://cieggjgnlbhli" path="res://scenes/elements/enemies/ground_enemy/ground_enemy.tscn" id="2_ucjer"]
 
 [node name="EnemySpawner" type="Marker2D"]
 gizmo_extents = 18.0
 script = ExtResource("1_371bx")
-enemy_scene = ExtResource("2_2ycfk")
+enemy_scene = ExtResource("2_ucjer")
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 1.5
