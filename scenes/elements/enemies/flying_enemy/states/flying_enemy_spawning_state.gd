@@ -1,6 +1,7 @@
 class_name FlyingEnemySpawningState extends State
 
-@export var character : FlyingEnemy
+@export var character: FlyingEnemy
+
 
 func init():
 	pass
@@ -20,4 +21,3 @@ func process(delta: float):
 
 func physics_process(delta: float):
 	pass
-

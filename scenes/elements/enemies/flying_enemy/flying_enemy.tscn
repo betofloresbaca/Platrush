@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdlt4kgrd8vxk"]
+[gd_scene load_steps=12 format=3 uid="uid://cdlt4kgrd8vxk"]
 
 [ext_resource type="Script" path="res://scenes/elements/enemies/flying_enemy/flying_enemy.gd" id="1_4l8k6"]
 [ext_resource type="Texture2D" uid="uid://cjer4rwfo2hls" path="res://assets/enemy/flying_enemy_0.png" id="2_8wx7c"]
@@ -37,6 +37,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtc82"]
 size = Vector2(10, 10)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_264ab"]
+size = Vector2(12, 12)
+
 [node name="FlyingEnemy" type="CharacterBody2D"]
 script = ExtResource("1_4l8k6")
 
@@ -63,3 +66,12 @@ character = NodePath("../..")
 [node name="Spawning" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
 script = ExtResource("8_8pu4n")
 character = NodePath("../..")
+
+[node name="BounceDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceDetector"]
+shape = SubResource("RectangleShape2D_264ab")
+
+[connection signal="area_entered" from="BounceDetector" to="StateMachine/Fly" method="_on_bounce_detector_area_entered"]

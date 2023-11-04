@@ -4,7 +4,8 @@ class_name State
 
 signal transitioned
 
-var is_new_state: bool
+var is_new_state: bool = false
+var is_active: bool = false
 
 
 func init():
@@ -12,11 +13,12 @@ func init():
 
 
 func enter():
+	is_active = true
 	is_new_state = true
 
 
 func exit():
-	pass
+	is_active = false
 
 
 func process(delta: float):

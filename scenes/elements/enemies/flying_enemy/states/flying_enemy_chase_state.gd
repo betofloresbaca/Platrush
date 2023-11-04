@@ -1,23 +1,24 @@
 class_name FlyingEnemyChaseState extends State
 
-@export var character : FlyingEnemy
+@export var character: FlyingEnemy
+
 
 func init():
-	pass
+	super.init()
 
 
 func enter():
+	super.enter()
 	character.get_node("AnimatedSprite2D").play("chase")
 
 
 func exit():
-	pass
+	super.exit()
 
 
 func process(delta: float):
-	pass
+	super.process(delta)
 
 
 func physics_process(delta: float):
-	pass
-
+	super.physics_process(delta)
