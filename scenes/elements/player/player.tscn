@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/elements/player/player.gd" id="1_vpdhh"]
 [ext_resource type="PackedScene" uid="uid://cwcddy80ujjr6" path="res://scenes/elements/player/player_death.tscn" id="2_rrmk8"]
 [ext_resource type="PackedScene" uid="uid://b6oi537lhw6vk" path="res://scenes/elements/footstep_particles.tscn" id="3_rvm6q"]
-[ext_resource type="Script" path="res://scenes/util/finite_state_machine/state_machine.gd" id="4_iuqk4"]
+[ext_resource type="Script" path="res://scripts/finite_state_machine/state_machine.gd" id="4_iuqk4"]
 [ext_resource type="Script" path="res://scenes/elements/player/player_states/player_normal_state.gd" id="5_l7431"]
 [ext_resource type="Script" path="res://scenes/elements/player/player_states/player_dash_state.gd" id="6_pr06t"]
 [ext_resource type="Script" path="res://scenes/elements/player/player_states/player_input_disabled_state.gd" id="7_82wom"]
