@@ -3,7 +3,8 @@ class_name PlayerInputDisabledState extends State
 @export var player: CharacterBody2D
 
 
-func enter():
+func enter(context: Dictionary):
+	super.enter(context)
 	player.get_node("AnimatedSprite2D").play("idle")
 
 

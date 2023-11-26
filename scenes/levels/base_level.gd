@@ -6,7 +6,6 @@ extends Node2D
 
 signal coin_total_changed(collected_coins, total_coins)
 
-#var player_scene = preload("res://scenes/elements/player.tscn")
 var spawn_position = Vector2.ZERO
 var current_player_node = null
 var total_coins = 0

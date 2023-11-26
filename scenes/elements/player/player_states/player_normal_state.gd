@@ -18,8 +18,8 @@ func init():
 	self.default_hurtbox_mask = player.get_node("Hurtbox").collision_mask
 
 
-func enter():
-	super.enter()
+func enter(context: Dictionary):
+	super.enter(context)
 	player.get_node("DashParticles").emitting = false
 	player.get_node("EnemyKill/CollisionShape2D").disabled = true
 	player.get_node("Hurtbox").collision_mask = default_hurtbox_mask
@@ -70,7 +70,7 @@ func process(delta: float):
 
 	if Input.is_action_just_pressed("dash") and self.dash_counter < max_dashes:
 		self.dash_counter += 1
-		self.transitioned.emit("Dash")
+		self.transitioned.emit("Dash", {})
 
 	update_animation(move_vector)
 

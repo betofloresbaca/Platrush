@@ -6,8 +6,8 @@ const max_dash_speed = 600
 const min_dash_speed = 200
 
 
-func enter():
-	super.enter()
+func enter(context: Dictionary):
+	super.enter(context)
 	player.get_node("DashAudioPlayer").play()
 	player.get_node("DashParticles").emitting = true
 	Helpers.apply_camera_shake(0.75)
@@ -29,4 +29,4 @@ func process(delta: float):
 	player.move_and_slide()
 	player.velocity.x = lerpf(0, player.velocity.x, pow(2, -8 * delta))
 	if abs(player.velocity.x) < min_dash_speed:
-		self.transitioned.emit("Normal")
+		self.transitioned.emit("Normal", {})

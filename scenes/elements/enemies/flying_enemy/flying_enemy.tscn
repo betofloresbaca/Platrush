@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdlt4kgrd8vxk"]
+[gd_scene load_steps=14 format=3 uid="uid://cdlt4kgrd8vxk"]
 
 [ext_resource type="Script" path="res://scenes/elements/enemies/flying_enemy/flying_enemy.gd" id="1_4l8k6"]
 [ext_resource type="Texture2D" uid="uid://cjer4rwfo2hls" path="res://assets/enemy/flying_enemy_0.png" id="2_8wx7c"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/elements/enemies/flying_enemy/states/flying_enemy_fly_state.gd" id="6_25hw0"]
 [ext_resource type="Script" path="res://scenes/elements/enemies/flying_enemy/states/flying_enemy_chase_state.gd" id="7_y3dgw"]
 [ext_resource type="Script" path="res://scenes/elements/enemies/flying_enemy/states/flying_enemy_spawning_state.gd" id="8_8pu4n"]
+[ext_resource type="Script" path="res://scenes/elements/enemies/flying_enemy/states/flying_enemy_chase_return_state.gd" id="9_nqr8d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_padb6"]
 animations = [{
@@ -38,7 +39,10 @@ animations = [{
 size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_264ab"]
-size = Vector2(12, 12)
+size = Vector2(15, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vx7tr"]
+size = Vector2(120, 120)
 
 [node name="FlyingEnemy" type="CharacterBody2D"]
 script = ExtResource("1_4l8k6")
@@ -63,6 +67,10 @@ character = NodePath("../..")
 script = ExtResource("7_y3dgw")
 character = NodePath("../..")
 
+[node name="ChaseReturn" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
+script = ExtResource("9_nqr8d")
+character = NodePath("../..")
+
 [node name="Spawning" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
 script = ExtResource("8_8pu4n")
 character = NodePath("../..")
@@ -74,4 +82,12 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BounceDetector"]
 shape = SubResource("RectangleShape2D_264ab")
 
+[node name="ChaseDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseDetector"]
+position = Vector2(0, 60)
+shape = SubResource("RectangleShape2D_vx7tr")
+
 [connection signal="area_entered" from="BounceDetector" to="StateMachine/Fly" method="_on_bounce_detector_area_entered"]
+[connection signal="body_exited" from="ChaseDetector" to="StateMachine/Fly" method="_on_chase_detector_body_exited"]

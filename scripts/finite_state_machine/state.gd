@@ -2,17 +2,19 @@ extends Node
 
 class_name State
 
-signal transitioned
+signal transitioned(state_name: String, context: Dictionary)
 
 var is_new_state: bool = false
 var is_active: bool = false
+var context: Dictionary
 
 
 func init():
 	pass
 
 
-func enter():
+func enter(context: Dictionary):
+	self.context = context
 	is_active = true
 	is_new_state = true
 

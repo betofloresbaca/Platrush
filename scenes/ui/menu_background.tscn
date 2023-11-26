@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://b51cm06wcblmv"]
+[gd_scene load_steps=9 format=3 uid="uid://b51cm06wcblmv"]
 
 [ext_resource type="PackedScene" uid="uid://kxlj21pwygi0" path="res://scenes/game_camera.tscn" id="1_jr1wr"]
 [ext_resource type="PackedScene" uid="uid://cbwlg4lacdevj" path="res://scenes/elements/clouds.tscn" id="2_xc2rg"]
 [ext_resource type="TileSet" uid="uid://c4368pkvscd8g" path="res://resources/tileset.tres" id="3_lvmwb"]
 [ext_resource type="PackedScene" uid="uid://qjh1omcwqyl4" path="res://scenes/elements/spikes.tscn" id="4_svr64"]
-[ext_resource type="PackedScene" uid="uid://cv7a1psnlesil" path="res://scenes/elements/enemy_spawner.tscn" id="5_ihab3"]
-[ext_resource type="PackedScene" uid="uid://b0bset8ndsv07" path="res://scenes/elements/enemy_bounce.tscn" id="6_rpx2m"]
+[ext_resource type="PackedScene" uid="uid://cv7a1psnlesil" path="res://scenes/elements/enemies/enemy_spawner.tscn" id="5_ihab3"]
+[ext_resource type="PackedScene" uid="uid://cieggjgnlbhli" path="res://scenes/elements/enemies/ground_enemy/ground_enemy.tscn" id="6_llmdl"]
+[ext_resource type="PackedScene" uid="uid://b0bset8ndsv07" path="res://scenes/elements/enemies/enemy_bounce.tscn" id="6_rpx2m"]
 [ext_resource type="PackedScene" uid="uid://cdcchbq3upa8v" path="res://scenes/elements/coin.tscn" id="7_4cdgc"]
 
 [node name="MenuBackground" type="Node2D"]
@@ -58,6 +59,10 @@ metadata/_edit_lock_ = true
 
 [node name="EnemySpawner" parent="Enemies" instance=ExtResource("5_ihab3")]
 position = Vector2(-135, 54)
+enemy_scene = ExtResource("6_llmdl")
+parameters = {
+"start_direction": Vector2(1, 0)
+}
 
 [node name="EnemyBounce" parent="Enemies" instance=ExtResource("6_rpx2m")]
 position = Vector2(-18, 54)
