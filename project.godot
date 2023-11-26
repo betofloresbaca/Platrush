@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Platrush"
-run/main_scene="res://scenes/levels/test_level.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+run/main_scene="res://scenes/ui/main_menu.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
@@ -124,4 +124,3 @@ click={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="gl_compatibility"
