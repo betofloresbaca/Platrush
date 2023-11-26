@@ -170,10 +170,10 @@ enemy_death_scene = ExtResource("2_7p2fa")
 is_spawning = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "spawn"
 libraries = {
 "": SubResource("AnimationLibrary_4xkrq")
 }
+autoplay = "spawn"
 next/default = &"default"
 next/spawn = &"default"
 
